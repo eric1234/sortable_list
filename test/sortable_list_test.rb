@@ -1,20 +1,17 @@
 ENV['RAILS_ENV'] = 'test'
-require 'test/unit'
-require 'rubygems'
-require 'action_pack'
+require "minitest/autorun"
+require 'active_support/all'
 require 'action_view'
 require 'sortable_list_helper'
 
-class SortableListTest < Test::Unit::TestCase
+class SortableListTest < Minitest::Test
   include ActionView::Helpers::UrlHelper
   include ActionView::Helpers::AssetTagHelper
-  include ActionView::Helpers::TagHelper
   include SortableListHelper
 
   attr_accessor :params
 
   def setup
-    @controller = self
     self.params = {}
     SortableListHelper.asc_img = nil
     SortableListHelper.desc_img = nil
@@ -88,12 +85,4 @@ class SortableListTest < Test::Unit::TestCase
       "#{key}=#{CGI.escape value}"
     end.join('&')
   end
-
-  # So image_tag works
-  def controller; self end
-  def config; self end
-  def relative_url_root; '' end
-  def asset_path; nil end
-  def asset_host; '' end
-  def assets_dir; '' end
 end
