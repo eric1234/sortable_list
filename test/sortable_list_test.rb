@@ -2,7 +2,7 @@ ENV['RAILS_ENV'] = 'test'
 require "minitest/autorun"
 require 'active_support/all'
 require 'action_view'
-require 'sortable_list_helper'
+require 'sortable_list'
 
 class SortableListTest < Minitest::Test
   include ActionView::Helpers::UrlHelper
